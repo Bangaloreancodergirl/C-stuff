@@ -1,0 +1,63 @@
+#include <stdio.h>
+int main()
+{
+    int num,i,count=0,sound=0,rev=0,rem,trim;
+    printf("Enter the number:\n");
+    scanf("%d",&num);
+    for(i=2;i<=num;i++)
+    {
+        if(num%i==0)
+        {
+            count++;
+        }
+    }
+    if(count>2)
+    {
+        printf("%d is not a prime number\n",num);
+    }
+    else
+    {
+        printf("%d is a prime number\n",num);
+    }
+    trim=num;
+    while(num!=0)
+    {
+        rem=num%10;
+        rev=(rev*10)+rem;
+        num=num/10;
+    }
+    printf("Reverse:%d\n",rev);
+    for(i=2;i<rev;i++)
+    {
+        if(rev%i==0)
+        {
+            sound++;
+        }
+    }
+    if(sound>2)
+    {
+        printf("%d is not a prime number\n",rev);
+    }
+    else
+    {
+        printf("%d is a prime number\n",rev);
+    }
+    if(sound<2 && count<2)
+    {
+        printf("%d and %d are emirps",trim,rev);
+    }
+    else if(sound<2 && count>2)
+    {
+        printf("%d is prime while %d is not",rev,trim);
+    }
+    else if(sound>2 && count<2)
+    {
+        printf("%d is prime while %d is not",trim,rev);
+    }
+    else if(sound>2 && count>2)
+    {
+        printf("%d and %d both are not primes",trim,rev);
+    }
+    
+    return 0;
+}
